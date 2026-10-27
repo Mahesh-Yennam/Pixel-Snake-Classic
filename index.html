@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFQ8M0VSFN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RFQ8M0VSFN');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Snake Classic - Retro 8-Bit Arcade Snake Game | Gamility</title>
+  <meta name="description" content="Play Pixel Snake Classic online. Free retro 8-bit arcade snake game. Eat apples, grow longer, toggle wrap borders or solid walls, and beat high scores.">
+  <meta name="keywords" content="snake game, pixel snake, retro snake, 8-bit snake, nokia snake, arcade game, gamility">
+  <meta name="theme-color" content="#22c55e">
+
+    <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pixel Snake Classic - Retro 8-Bit Arcade Snake Game | Gamility">
+  <meta property="og:description" content="Play Pixel Snake Classic online. Free retro 8-bit arcade snake game. Eat apples, grow longer, toggle wrap borders or solid walls, and beat high scores.">
+  <meta property="og:image" content="preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Pixel Snake Classic - Retro 8-Bit Arcade Snake Game | Gamility">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pixel Snake Classic - Retro 8-Bit Arcade Snake Game | Gamility">
+  <meta name="twitter:description" content="Play Pixel Snake Classic online. Free retro 8-bit arcade snake game. Eat apples, grow longer, toggle wrap borders or solid walls, and beat high scores.">
+  <meta name="twitter:image" content="preview.png">
+
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Pixel Snake Classic",
+    "url": "https://mahesh-yennam.github.io/Gamility/games/pixel-snake-classic/",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "All",
+    "genre": ["Arcade", "Retro", "Casual"],
+    "description": "Retro 8-bit arcade snake game featuring solid walls and wrap-around modes, synthesized Web Audio chiptunes, and responsive mobile touch D-pad."
+  }
+  </script>
+</head>
+<body>
+  <!-- Top Gamility Ribbon for Standalone & Repos Navigation -->
+  <header class="top-nav-ribbon" role="banner">
+    <a href="https://mahesh-yennam.github.io/Gamility/" class="ribbon-brand" title="Gamility Home">
+      <svg width="24" height="24" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M20 4L4 12V28L20 36L36 28V12L20 4Z" stroke="#22c55e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M20 12L12 16V24L20 28L28 24V16L20 12Z" fill="#16a34a" fill-opacity="0.85"/>
+        <circle cx="20" cy="20" r="3" fill="#ffffff"/>
+      </svg>
+      <span>Gamility Arcade</span>
+    </a>
+    <a href="https://mahesh-yennam.github.io/Gamility/games.html" class="ribbon-back-btn" title="Back to All Games">
+      <span>←</span> Back to Games
+    </a>
+  </header>
+
+  <!-- Main Game Stage -->
+  <main class="game-wrapper" id="gameWrapper">
+    <!-- Header with Live HUD -->
+    <header class="arcade-header">
+      <div class="game-title-badge">
+        <h1>Pixel Snake Classic</h1>
+        <span class="game-mode-subtitle" id="modeSubtitle">Solid Walls • Normal Speed</span>
+      </div>
+      <div class="hud-panel" aria-label="Game HUD">
+        <div class="hud-stat">
+          <span class="hud-label">Score</span>
+          <span id="scoreVal" class="hud-val stat-green">0</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">Best</span>
+          <span id="highVal" class="hud-val stat-gold">0</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">Length</span>
+          <span id="lengthVal" class="hud-val stat-cyan">3</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">Speed</span>
+          <span id="speedVal" class="hud-val">1x</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls Toolbar -->
+    <div class="controls-toolbar">
+      <div class="toolbar-btn-group">
+        <button id="wallToggleBtn" class="tool-icon-btn" type="button" title="Toggle Solid Boundary Walls or Wrap-Around Portals">
+          <span>🧱</span> Walls: Solid
+        </button>
+        <button id="speedToggleBtn" class="tool-icon-btn" type="button" title="Toggle Slither Speed">
+          <span>⚡</span> Speed: Normal
+        </button>
+        <button id="pauseBtn" class="tool-icon-btn" type="button" title="Pause Game (P)">
+          <span>⏸️</span> Pause
+        </button>
+        <button id="muteBtn" class="tool-icon-btn" type="button" title="Toggle Sound">
+          <span>🔊</span> Sound
+        </button>
+      </div>
+    </div>
+
+    <!-- Retro CRT Arcade Canvas Stage -->
+    <div class="canvas-container">
+      <canvas id="gameCanvas" width="600" height="600" aria-label="Pixel Snake 8-Bit Canvas Arena"></canvas>
+
+      <!-- Start Game Overlay -->
+      <div id="startOverlay" class="arcade-overlay">
+        <div class="pixel-badge">8-BIT ARCADE</div>
+        <h2 class="overlay-title">Pixel Snake</h2>
+        <p class="overlay-subtitle">Steer your pixel serpent, chomp juicy apples, and grow as long as possible without biting your own tail!</p>
+        <button id="startBtn" class="arcade-btn" type="button">
+          <span>▶</span> Start Slither
+        </button>
+      </div>
+
+      <!-- Game Over Overlay -->
+      <div id="gameOverOverlay" class="arcade-overlay hidden">
+        <div class="pixel-badge red-badge">GAME OVER</div>
+        <h2 class="overlay-title red-title">Crash!</h2>
+        <div class="final-score-box">
+          <p>Final Score: <strong id="finalScore" class="stat-green">0</strong></p>
+          <p>Snake Length: <strong id="finalLength" class="stat-cyan">3</strong></p>
+        </div>
+        <button id="restartBtn" class="arcade-btn" type="button">
+          <span>🔄</span> Play Again
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Touch D-Pad -->
+    <div class="mobile-dpad-container" aria-label="Touch Navigation Controls">
+      <div class="dpad-grid">
+        <button id="dpadUp" class="dpad-btn up" type="button" aria-label="Move Up">▲</button>
+        <button id="dpadLeft" class="dpad-btn left" type="button" aria-label="Move Left">◀</button>
+        <button id="dpadDown" class="dpad-btn down" type="button" aria-label="Move Down">▼</button>
+        <button id="dpadRight" class="dpad-btn right" type="button" aria-label="Move Right">▶</button>
+      </div>
+    </div>
+
+    <!-- Instructions & Power-Up Legend Card -->
+    <section class="game-instructions-card" aria-label="Snake Controls and Food Legend">
+      <h3>🐍 How to Play & Food Legend</h3>
+      <div class="legend-grid">
+        <div class="legend-item">
+          <span class="legend-badge">🍎</span>
+          <div><strong>Pixel Apple:</strong> +10 Points. Lengthens your snake by +1 segment.</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-badge">⭐</span>
+          <div><strong>Golden Star:</strong> +50 Bonus Points! Rare delicacy that disappears after 8 seconds.</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-badge">🫐</span>
+          <div><strong>Speed Berry:</strong> +25 Points. Temporarily supercharges slither speed and points multiplier.</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-badge">🧱</span>
+          <div><strong>Border Modes:</strong> Switch between punishing <strong>Solid Walls</strong> or seamless <strong>Wrap-Around</strong> portals anytime in the top bar.</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: #94a3b8; line-height: 1.5;">
+        <strong>Desktop Controls:</strong> Use <strong>Arrow Keys</strong> or <strong>W, A, S, D</strong> to steer. Press <strong>Spacebar</strong> to start/restart, and <strong>P</strong> to Pause.<br>
+        <strong>Mobile Controls:</strong> Tap the on-screen <strong>D-Pad</strong> or swipe your finger directly across the game canvas in any direction.
+      </p>
+    </section>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>

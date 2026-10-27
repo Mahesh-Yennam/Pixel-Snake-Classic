@@ -1,0 +1,473 @@
+/* ==========================================================================
+   PIXEL SNAKE CLASSIC - Retro 8-Bit Arcade Stylesheet
+   ========================================================================== */
+
+:root {
+  --bg-dark: #020617;
+  --bg-panel: rgba(15, 23, 42, 0.85);
+  --border-neon: rgba(34, 197, 94, 0.35);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+
+  --neon-green: #22c55e;
+  --neon-emerald: #10b981;
+  --neon-cyan: #38bdf8;
+  --neon-gold: #fbbf24;
+  --neon-red: #ef4444;
+
+  --font-ui: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-pixel: 'Press Start 2P', monospace;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 50% 15%, rgba(34, 197, 94, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 80% 85%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+  color: #f8fafc;
+  font-family: var(--font-ui);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+/* --- Standalone Top Gamility Ribbon --- */
+.top-nav-ribbon {
+  background: rgba(10, 14, 26, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+}
+
+.ribbon-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.ribbon-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--neon-green);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  transition: all 0.2s ease;
+}
+
+.ribbon-back-btn:hover {
+  background: rgba(34, 197, 94, 0.25);
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
+  color: #fff;
+}
+
+/* --- Main Layout Wrapper --- */
+.game-wrapper {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  flex: 1;
+  align-items: center;
+}
+
+/* --- Header with Live HUD --- */
+.arcade-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.15rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.game-title-badge {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-title-badge h1 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+.game-mode-subtitle {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--neon-green);
+  letter-spacing: 0.03em;
+}
+
+.hud-panel {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--bg-panel);
+  padding: 0.5rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-neon);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.hud-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hud-label {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hud-val {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #f8fafc;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-green {
+  color: var(--neon-green);
+}
+
+.stat-gold {
+  color: var(--neon-gold);
+}
+
+.stat-cyan {
+  color: var(--neon-cyan);
+}
+
+/* --- Controls Toolbar --- */
+.controls-toolbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.toolbar-btn-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.tool-icon-btn {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f8fafc;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.tool-icon-btn:hover {
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+  background: rgba(34, 197, 94, 0.12);
+}
+
+/* ==========================================================================
+   RETRO CRT CANVAS ARENA
+   ========================================================================== */
+.canvas-container {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  aspect-ratio: 1 / 1;
+  background: #020617;
+  border: 3px solid #16a34a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(34, 197, 94, 0.25),
+    inset 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+#gameCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Overlays (Start & Game Over Screen) */
+.arcade-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.arcade-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pixel-badge {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--neon-green);
+  border: 1px solid var(--neon-green);
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.pixel-badge.red-badge {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--neon-red);
+  border-color: var(--neon-red);
+}
+
+.overlay-title {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--neon-green);
+  text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.overlay-title.red-title {
+  color: var(--neon-red);
+  text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+.overlay-subtitle {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  max-width: 380px;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.final-score-box {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.arcade-btn {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #ffffff;
+  border: none;
+  padding: 0.85rem 1.8rem;
+  border-radius: 10px;
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+  transition: all 0.2s ease;
+}
+
+.arcade-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(34, 197, 94, 0.6);
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+}
+
+.arcade-btn:active {
+  transform: translateY(1px);
+}
+
+/* ==========================================================================
+   MOBILE TOUCH D-PAD
+   ========================================================================== */
+.mobile-dpad-container {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.dpad-grid {
+  display: grid;
+  grid-template-areas:
+    ".    up    ."
+    "left .     right"
+    ".    down  .";
+  grid-template-columns: 60px 60px 60px;
+  grid-template-rows: 55px 55px 55px;
+  gap: 6px;
+}
+
+.dpad-btn {
+  background: rgba(15, 23, 42, 0.9);
+  border: 2px solid rgba(34, 197, 94, 0.4);
+  color: #ffffff;
+  border-radius: 12px;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.1s ease, background 0.1s ease, border-color 0.1s ease;
+}
+
+.dpad-btn.up    { grid-area: up; }
+.dpad-btn.left  { grid-area: left; }
+.dpad-btn.down  { grid-area: down; }
+.dpad-btn.right { grid-area: right; }
+
+.dpad-btn:active {
+  background: rgba(34, 197, 94, 0.35);
+  border-color: var(--neon-green);
+  transform: scale(0.92);
+}
+
+/* --- Instructions & Protocol Card --- */
+.game-instructions-card {
+  width: 100%;
+  margin-top: 1rem;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.game-instructions-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: var(--neon-green);
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  font-size: 0.88rem;
+  color: #cbd5e1;
+}
+
+.legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.legend-badge {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 768px) {
+  .arcade-header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 0.65rem;
+  }
+
+  .game-title-badge {
+    align-items: center;
+  }
+
+  .hud-panel {
+    justify-content: space-around;
+    gap: 0.5rem;
+    padding: 0.45rem 0.75rem;
+  }
+
+  .hud-stat .hud-val {
+    font-size: 1rem;
+  }
+
+  .mobile-dpad-container {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-wrapper {
+    padding: 0.5rem 0.5rem 2rem;
+  }
+
+  .canvas-container {
+    border-radius: 12px;
+  }
+
+  .tool-icon-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.78rem;
+  }
+}

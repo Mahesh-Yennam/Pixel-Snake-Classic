@@ -1,0 +1,16 @@
+{
+  "name": "Pixel Snake Classic - Retro 8-Bit Arcade Game",
+  "short_name": "Pixel Snake",
+  "description": "Play classic retro pixel snake online. Eat apples, grow longer, unlock speed tiers, toggle wrap-around border mode, and beat high scores.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#22c55e",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
